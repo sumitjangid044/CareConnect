@@ -5,10 +5,10 @@ CareConnect is a Doctor Appointment Booking Platform built using the MERN Stack.
 ## 🚀 Live Demo
 
 Frontend:
-https://your-frontend.vercel.app
+https://care-connect-eight-flax.vercel.app
 
 Admin Panel:
-https://your-admin.vercel.app
+https://care-connect-6xf8.vercel.app/
 
 Backend API:
 https://careconnect-backend-1-zypb.onrender.com
