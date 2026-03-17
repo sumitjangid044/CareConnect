@@ -1,32 +1,23 @@
-import React, { useContext, useState, useEffect } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AdminContext } from '../context/AdminContext'
 import { DoctorContext } from '../context/DoctorContext'
 import { NavLink, useLocation } from 'react-router-dom'
 import { assets } from '../assets/assets'
 
-const Sidebar = () => {
+const Sidebar = ({ open, setOpen }) => {
 
     const { aToken } = useContext(AdminContext)
     const { dToken } = useContext(DoctorContext)
 
-    const [open, setOpen] = useState(false)
     const location = useLocation()
 
-    // ✅ Route change → sidebar close
+    // route change → close sidebar
     useEffect(() => {
         setOpen(false)
     }, [location])
 
     return (
         <>
-            {/* ☰ Button (Mobile only) */}
-            <button
-                onClick={() => setOpen(true)}
-                className="md:hidden p-2 text-xl"
-            >
-                ☰
-            </button>
-
             {/* Overlay */}
             {open && (
                 <div
@@ -43,103 +34,68 @@ const Sidebar = () => {
                 md:static md:translate-x-0
             `}>
 
-                {/* Close button */}
+                {/* Close button (mobile) */}
                 <div className="flex justify-end md:hidden p-3">
                     <button onClick={() => setOpen(false)}>✕</button>
                 </div>
 
-                {/* ADMIN MENU */}
+                {/* ADMIN */}
                 {aToken && (
                     <ul className='text-[#515151] mt-5'>
 
-                        <NavLink
-                            to='/admin-dashboard'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/admin-dashboard' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.home_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.home_icon} />
                             <p>Dashboard</p>
                         </NavLink>
 
-                        <NavLink
-                            to='/all-appointments'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/all-appointments' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.appointment_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.appointment_icon} />
                             <p>Appointments</p>
                         </NavLink>
 
-                        <NavLink
-                            to='/add-doctor'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/add-doctor' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.add_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.add_icon} />
                             <p>Add Doctor</p>
                         </NavLink>
 
-                        <NavLink
-                            to='/doctors-list'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/doctors-list' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.people_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.people_icon} />
                             <p>Doctors List</p>
                         </NavLink>
 
                     </ul>
                 )}
 
-                {/* DOCTOR MENU */}
+                {/* DOCTOR */}
                 {dToken && (
                     <ul className='text-[#515151] mt-5'>
 
-                        <NavLink
-                            to='/doctor-dashboard'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/doctor-dashboard' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.home_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.home_icon} />
                             <p>Dashboard</p>
                         </NavLink>
 
-                        <NavLink
-                            to='/doctor-appointments'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/doctor-appointments' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.appointment_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.appointment_icon} />
                             <p>Appointments</p>
                         </NavLink>
 
-                        <NavLink
-                            to='/doctor-profile'
-                            onClick={() => setOpen(false)}
+                        <NavLink to='/doctor-profile' onClick={() => setOpen(false)}
                             className={({ isActive }) =>
-                                `flex items-center gap-3 py-3.5 px-4 cursor-pointer 
-                                ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`
-                            }
-                        >
-                            <img src={assets.people_icon} alt="" />
+                                `flex items-center gap-3 py-3.5 px-4 ${isActive ? 'bg-[#F2F3FF] border-r-4 border-[#5F6FFF]' : ''}`}>
+                            <img src={assets.people_icon} />
                             <p>Profile</p>
                         </NavLink>
 
