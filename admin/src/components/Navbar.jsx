@@ -20,12 +20,12 @@ const Navbar = ({ setOpen }) => {
     }
 
     return (
-        <div className='flex justify-between items-center px-4 sm:px-10 py-3 bg-white'>
+        <div className='flex justify-between items-center px-4 py-3 bg-white'>
 
-            {/* LEFT SIDE */}
-            <div className='flex items-center gap-3'>
+            {/* LEFT */}
+            <div className='flex items-center gap-1 sm:gap-2 flex-1 min-w-0'>
 
-                {/* ☰ Mobile Menu Button */}
+                {/* ☰ Mobile Menu */}
                 <button
                     onClick={() => setOpen(true)}
                     className='md:hidden text-xl'
@@ -33,17 +33,23 @@ const Navbar = ({ setOpen }) => {
                     ☰
                 </button>
 
-                <img className='w-32 sm:w-40 cursor-pointer' src={assets.admin_logo} alt="" />
+                {/* Logo */}
+                <img
+                    className='w-28 sm:w-36 shrink-0'
+                    src={assets.admin_logo}
+                    alt=""
+                />
 
-                <p className='border px-2.5 py-0.5 rounded-full border-gray-500 text-gray-600 text-xs'>
+                {/* Admin / Doctor Badge */}
+                <p className='border px-1.5 py-0.5 rounded-full text-[10px] sm:text-xs text-gray-600 whitespace-nowrap'>
                     {aToken ? "Admin" : "Doctor"}
                 </p>
             </div>
 
-            {/* RIGHT SIDE */}
+            {/* RIGHT */}
             <button
                 onClick={logout}
-                className='bg-[#5F6FFF] text-white text-sm px-6 sm:px-10 py-2 rounded-full'
+                className='bg-[#5F6FFF] text-white text-xs sm:text-sm px-4 sm:px-8 py-2 rounded-full whitespace-nowrap'
             >
                 Logout
             </button>
