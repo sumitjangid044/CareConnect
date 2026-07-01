@@ -281,8 +281,8 @@ const paymentStripe = async (req, res) => {
 
             mode: 'payment',
 
-            success_url: `http://localhost:5173/my-appointment?success=true&appointmentId=${appointmentId}`,
-            cancel_url: `http://localhost:5173/my-appointment`,
+            success_url: `${process.env.FRONTEND_URL}/my-appointment?success=true&appointmentId=${appointmentId}`,
+            cancel_url: `${process.env.FRONTEND_URL}/my-appointment`,
 
         })
 
